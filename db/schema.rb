@@ -11,12 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227142513) do
+ActiveRecord::Schema.define(version: 20170227154050) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "dressing_costumes", force: :cascade do |t|
+    t.integer  "avatar_id",  limit: 4
+    t.integer  "item_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "dressing_costumes", ["avatar_id"], name: "index_dressing_costumes_on_avatar_id", using: :btree
+
+  create_table "equipment_characters", force: :cascade do |t|
+    t.integer  "character_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "equipment_characters", ["character_id"], name: "index_equipment_characters_on_character_id", using: :btree
+
+  create_table "equipment_weapons", force: :cascade do |t|
+    t.integer  "equipment_character_id", limit: 4
+    t.integer  "item_id",                limit: 4
+    t.integer  "cost",                   limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "equipment_weapons", ["equipment_character_id"], name: "index_equipment_weapons_on_equipment_character_id", using: :btree
 
 end
