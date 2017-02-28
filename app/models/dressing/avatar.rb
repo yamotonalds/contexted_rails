@@ -33,8 +33,8 @@ module Dressing
       end
 
       # 永続化用メソッド
-      def persist
-        save!
+      def persist(avatar)
+        avatar.save!
       end
     end
 

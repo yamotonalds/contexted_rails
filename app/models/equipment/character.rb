@@ -35,8 +35,8 @@ module Equipment
       end
 
       # 永続化用メソッド
-      def persist
-        save!
+      def persist(character)
+        character.save!
       end
     end
 
